@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'import_export',#library for import expor to add after installation
     'app', #app connected to django-importexport
+    # Other apps…
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [

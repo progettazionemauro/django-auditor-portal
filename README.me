@@ -21,12 +21,15 @@
 - create a Django App: django-admin startapp app
 - pip3 install django-import-export
 - into settings.py add: and add “app” (app name) and “import_export” (django-import-export) to the list of “INSTALLED_APPS”
+- Installare (nel caso si voglia realizzare un modello anagrafica personale) le due librerie  pip3 install django-phonenumber-field e pip3 install phonenumbers. Poi inserire in settings:  # Other apps…
+    "phonenumber_field" Vedere qui: https://django-phonenumber-field.readthedocs.io/en/latest/index.html
 
 #### Create Model
 ### Ora è necessario create il modello che possa utilizzare la funzione di importazione dei dati
 ### Qui si hanno due opzioni a seconda dell'attività da svolgere:
 ### OPZIONE 1: si ha a disposizione un database già completo da una fonte tipo xls, csv etc e lo si vuole importare all'interno di DJANGO. 
 ### Si parte dalla OPZIONE 1 ipotizzando un caso complesso: Database in gsheets
+
 
 ### Importazione di un database gsheets, Gsheets Blueprint
 1) Avendo a disposizione un DB da Gsheets si può esportare lo stesso in Json o xls
