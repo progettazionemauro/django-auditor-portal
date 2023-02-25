@@ -21,7 +21,7 @@ class Auditor(models.Model):
     cellulare_auditor=PhoneNumberField()
 
     def __str__(self):
-        return self.name_auditor
+        return self.nome_auditor
 
  
 
