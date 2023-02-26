@@ -1,5 +1,5 @@
 # Scaffold for Backend-Frontend in Django
-# parte della spiegazione è tratta da questo post:https://python.plainenglish.io/how-to-convert-database-model-to-csv-xls-json-etc-and-vice-versa-using-django-import-export-42312aad7dfe
+Parte della spiegazione è tratta da questo post:https://python.plainenglish.io/how-to-convert-database-model-to-csv-xls-json-etc-and-vice-versa-using-django-import-export-42312aad7dfe
 ## Questo progetto ha lo scopo di recuperare dei dati da google sheets, inserirli in un database
 ## Django per poi strutturare il frontend
 ## Dalle analisi condotte allo stato attuale risulta INUTILE creare un'apposita API per il collegamento

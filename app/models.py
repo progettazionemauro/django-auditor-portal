@@ -22,6 +22,20 @@ class Auditor(models.Model):
 
     def __str__(self):
         return self.nome_auditor
+    
+class SchemaCerificativo(models.Model):
+    
+    Scelta_Schema = (
+        ('1','ISO 9001:2015'),
+        ('2', 'ISO 14001:2018'),
+        ('3', 'ISO 45001:2015'),
+       )  
+    
+    
+    schema_certificazione = models.CharField(max_length=300, choices = Scelta_Schema,default="ISO 9001:2015") 
+
+    def __str__(self):
+        return self.name
 
  
 
@@ -83,11 +97,7 @@ class Auditor(models.Model):
 
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -95,10 +105,3 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-class Book(models.Model):
-    name = models.CharField(max_length=100)
-    author = models.ForeignKey(Author,on_delete = models.CASCADE ,blank=True, null=True)
-    categories = models.ManyToManyField(Category, blank=True)
-
-    def __str__(self):
-        return self.name
