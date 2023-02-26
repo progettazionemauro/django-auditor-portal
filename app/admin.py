@@ -15,7 +15,7 @@ class PhoneForm(forms.ModelForm):   # classe per registrare il widget per l'inse
 class AuditorAdmin(admin.ModelAdmin):
     form = PhoneForm
 
-@admin.register(SchemaCerificativo)
+@admin.register(SchemaCertificativo)
 class SchemaCertificativoAdmin(admin.ModelAdmin):
     pass
 

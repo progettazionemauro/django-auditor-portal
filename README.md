@@ -24,11 +24,22 @@ Parte della spiegazione è tratta da questo post:https://python.plainenglish.io/
 - Installare (nel caso si voglia realizzare un modello anagrafica personale) le due librerie  pip3 install django-phonenumber-field e pip3 install phonenumbers. Poi inserire in settings:  # Other apps…
     "phonenumber_field" Vedere qui: https://django-phonenumber-field.readthedocs.io/en/latest/index.html - Vedere per questa
     risposta per l'inserimento del widget: https://stackoverflow.com/a/72665157/11233866
-#### Create Model
-### Ora è necessario create il modello che possa utilizzare la funzione di importazione dei dati
-### Qui si hanno due opzioni a seconda dell'attività da svolgere:
-### OPZIONE 1: si ha a disposizione un database già completo da una fonte tipo xls, csv etc e lo si vuole importare all'interno di DJANGO. 
-### Si parte dalla OPZIONE 1 ipotizzando un caso complesso: Database in gsheets
+
+## Create Model
+Ora è necessario create il modello che possa utilizzare la funzione di importazione dei dati
+### Operazioni Preliminari per la gestione del database e del modello
+
+Le operazioni di definizione delle chiavi e la gestioene del modello interagiscono fortemente con il database sottostante. Per cui di seguito si indicano alcuni punti essenziali per la gestione del database e nel caso di crash del modello (spesso quando si effettua python3 runserver migrate) 
+- Gestione delle relazioni - LINK 1 https://www.pythontutorial.net/django-tutorial/django-one-to-many/
+- Gestione delle relazioni - LINK2: https://medium.com/analytics-vidhya/difference-between-one-to-one-many-to-many-and-many-to-one-relationships-in-django-2304b567152f
+- Django Integrity of the database: https://medium.com/@inem.patrick/django-database-integrity-foreignkey-on-delete-option-db7d160762e4
+- Shell per interagire con il dtatabase: http://www.learningaboutelectronics.com/Articles/How-to-access-and-use-the-Python-shell-with-Django.php
+
+
+### Creazione del database
+Qui si hanno due opzioni a seconda dell'attività da svolgere:
+OPZIONE 1: si ha a disposizione un database già completo da una fonte tipo xls, csv etc e lo si vuole importare all'interno di DJANGO. 
+Si parte dalla OPZIONE 1 ipotizzando un caso complesso: Database in gsheets
 
 
 ### Importazione di un database gsheets, Gsheets Blueprint

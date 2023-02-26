@@ -5,6 +5,22 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
+
+    
+class SchemaCertificativo(models.Model):
+    
+    Scelta_Schema = (
+        ('1','ISO 9001:2015'),
+        ('2', 'ISO 14001:2018'),
+        ('3', 'ISO 45001:2015'),
+       )  
+    
+    
+    schema_certificazione = models.CharField(max_length=300, choices = Scelta_Schema,default="ISO 9001:2015") 
+
+    def __str__(self):
+        return self.schema_certificazione
+
 class Auditor(models.Model):
     Scelta_Nome_Auditor = (
         ('1', 'Bassotti'),
@@ -19,23 +35,10 @@ class Auditor(models.Model):
     nome_auditor = models.CharField(max_length=300, choices = Scelta_Nome_Auditor,default="Bassotti") # fare attenzione: nel momento in cui si sostituisce il database è necessario inserire o il valore di default oppure blank and null: vedere qui stackoverflow: https://stackoverflow.com/a/73509787/11233866       
     email_auditor=models.EmailField(max_length=254)
     cellulare_auditor=PhoneNumberField()
+    schema_auditing=models.ForeignKey(SchemaCertificativo, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.nome_auditor
-    
-class SchemaCerificativo(models.Model):
-    
-    Scelta_Schema = (
-        ('1','ISO 9001:2015'),
-        ('2', 'ISO 14001:2018'),
-        ('3', 'ISO 45001:2015'),
-       )  
-    
-    
-    schema_certificazione = models.CharField(max_length=300, choices = Scelta_Schema,default="ISO 9001:2015") 
-
-    def __str__(self):
-        return self.name
 
  
 
