@@ -9,6 +9,7 @@ class PhoneForm(forms.ModelForm):   # classe per registrare il widget per l'inse
     class Meta:
         widgets = {
             'cellulare_auditor':PhoneNumberPrefixWidget(initial='IT'),
+            'cellulare_ref_cliente':PhoneNumberPrefixWidget(initial='IT'),
         }
         
 @admin.register(Auditor)                # registrazione in admin del widget per l'inseimento del n° telefonico
@@ -19,7 +20,10 @@ class AuditorAdmin(admin.ModelAdmin):
 class SchemaCertificativoAdmin(admin.ModelAdmin):
     pass
 
-class AuthorAdmin(admin.ModelAdmin):
+
+@admin.register(AnagraficaTeamCliente)
+class AnagraficaTeamClienteAdmin(admin.ModelAdmin):
+    form=PhoneForm
     pass
 
 

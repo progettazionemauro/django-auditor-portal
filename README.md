@@ -69,11 +69,9 @@ now add this to settings.py (before MIDDLEWARE):
 CRONJOBS = [('*/5 * * * *', 'myapp.cron.my_scheduled_job')]
 
 I comandi principali sono
-:::caution
-python manage.py crontab add
-python manage.py crontab show
-python manage.py crontab remove
-:::
+ - python manage.py crontab add
+ - python manage.py crontab show
+ - python manage.py crontab remove
 
 
 ### Creazione del database
