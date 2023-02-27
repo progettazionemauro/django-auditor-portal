@@ -35,6 +35,46 @@ Le operazioni di definizione delle chiavi e la gestioene del modello interagisco
 - Django Integrity of the database: https://medium.com/@inem.patrick/django-database-integrity-foreignkey-on-delete-option-db7d160762e4
 - Shell per interagire con il dtatabase: http://www.learningaboutelectronics.com/Articles/How-to-access-and-use-the-Python-shell-with-Django.php
 
+### Gestione dei Database in Django
+La creazione, distruzione, upgrade e nuovo inserimento di Classi in models.py dovuti agli aggiornamenti del database possono condurre lo sviluppo del progetto a risultati disastrosi! Infatti, il database stesso soprattuo con l'inserimento di nuove chiavi può comportare il crash del progetto! Come indicato sopra la soluzione drastica può essere quella di effettuare un ripristino forzato del precedente commit con git reset. Tuttavia questo è un passaggio che non può essere utilizzato nella normalità. Ci si deve invece affidare sia in sviluppo che in produzione ad elementi di backup
+Fortunatamente esistono strumenti relativamente semplici sia per il backup del Database, che per il restore che come si vedrà più sotto di backup automatico del database.
+Di seguito si riportano i passaggi principali rimandando alle fonti per il dettaglio
+:::
+#### Installazione django-dbbackup
+[fonte](https://www.youtube.com/watch?v=s54HYoJ8wrs)
+1. pip3 install django-dbbackup [LINK](https://django-dbbackup.readthedocs.io/en/master/)
+2. INSTALLED_APPS = (
+    ...
+    'dbbackup',  # django-dbbackup
+) 
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'}
+
+3. creare nella directory di progetto la directory backup
+4. creare il primo backup: python3 manage.py dbbackup
+5. reinstaurare il backup: python3 manage.py dbrestore
+
+#### Creazione dei task periodici (effettuazione di backup periodico)
+1. pip3 install wheel
+2. pip3 install django-crontab [LINK pip3](https://pypi.org/project/django-crontab/)
+   1. on top on settings.py {'django_crontab', ...} 
+   2. now in <project_folder>/cron.py:  
+>    from django.core.management import call_command
+> def my_backup():
+>     try:
+>         call_command('dbbackup')
+>     except:
+>         pass
+now add this to settings.py (before MIDDLEWARE): 
+CRONJOBS = [('*/5 * * * *', 'myapp.cron.my_scheduled_job')]
+
+I comandi principali sono
+:::caution
+python manage.py crontab add
+python manage.py crontab show
+python manage.py crontab remove
+:::
+
 
 ### Creazione del database
 Qui si hanno due opzioni a seconda dell'attività da svolgere:

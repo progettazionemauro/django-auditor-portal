@@ -31,17 +31,24 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',  # crontab app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dbbackup',  # django-dbbackup
     'import_export',#library for import expor to add after installation
     'app', #app connected to django-importexport
     # Other apps…
     "phonenumber_field",
 ]
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage' #dbbackup setting
+DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'} #dbbackup setting
+
+CRONJOBS = [ ('*/60 * * * *', 'DjangoLgs.cron.my_backup') ] # crontab settings
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
