@@ -21,10 +21,10 @@ class SchemaCertificativoAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(AnagraficaTeamCliente)
+""" @admin.register(AnagraficaTeamCliente)
 class AnagraficaTeamClienteAdmin(admin.ModelAdmin):
     form=PhoneForm
-    pass
+    pass """
 
 
 
