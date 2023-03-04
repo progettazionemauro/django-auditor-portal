@@ -67,7 +67,7 @@ class Auditor(models.Model): #registrato
         on_delete=models.PROTECT
     )
 
-# class AnagraficaSitiCliente(models.Model):  ## RIPRENDERE DA QUESTA CLASSE##
+class AnagraficaSitiCliente(models.Model):  ## RIPRENDERE DA QUESTA CLASSE##
 #   # Relazione one-To-Many for EvidenzeAuditSito
 #   # Qui vengono riportate evidenze sui siti: n° Sito / Indirizzo Sito / Referente di Sito
     Scelta_nome_sito= (
