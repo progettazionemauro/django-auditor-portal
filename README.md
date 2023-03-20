@@ -36,6 +36,9 @@ Le operazioni di definizione delle chiavi e la gestioene del modello interagisco
 - Shell per interagire con il dtatabase: http://www.learningaboutelectronics.com/Articles/How-to-access-and-use-the-Python-shell-with-Django.php
 
 ### Gestione dei Database in Django
+#### Operazione Preliminare
+Installazione di PostgreSQL - Seguire questo link su [DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-20-04)
+
 La creazione, distruzione, upgrade e nuovo inserimento di Classi in models.py dovuti agli aggiornamenti del database possono condurre lo sviluppo del progetto a risultati disastrosi! Infatti, il database stesso soprattuo con l'inserimento di nuove chiavi può comportare il crash del progetto! Come indicato sopra la soluzione drastica può essere quella di effettuare un ripristino forzato del precedente commit con git reset. Tuttavia questo è un passaggio che non può essere utilizzato nella normalità. Ci si deve invece affidare sia in sviluppo che in produzione ad elementi di backup
 Fortunatamente esistono strumenti relativamente semplici sia per il backup del Database, che per il restore che come si vedrà più sotto di backup automatico del database.
 Di seguito si riportano i passaggi principali rimandando alle fonti per il dettaglio

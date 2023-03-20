@@ -1,11 +1,24 @@
 from django.db import models
+from django_google_maps.fields import AddressField, GeoLocationField
 from phonenumber_field.modelfields import PhoneNumberField
+from location_field.models.plain import PlainLocationField
+
+""" class Place(models.Model):  
+    city = models.CharField(max_length=255)
+    location = PlainLocationField(based_fields=['city'], zoom=7) """
+
+
+
+""" class SampleModel(models.Model):
+    address = AddressField(max_length=100)
+    geolocation = GeoLocationField(blank=True)
+
+    def __str__(self):
+        return self.address """
 
 class SchemaCertificativo(models.Model): #registrato
     
     schema_certificazione = models.CharField(max_length=300, unique=True) 
-   
-    
     class Meta:
         verbose_name_plural="Schema Certificativo"
 
@@ -29,87 +42,35 @@ class Auditor(models.Model): #registrato
     
 
     
-# class AnagraficaTeamCliente(models.Model):
-#   # Relazione one-To-Many for AnagraficaSitiCliente
-#   # Qui vengono riportati: nominativi dei referenti di sito / Ruolo / (prestare attenzione al cambiamento organizzativo) / email / cell
-
-""" class AnagraficaTeamCliente(models.Model):  #registrato - manca la relazione
-    Scelta_ref_cliente = (
-        ('1', 'dott. Fabio Fivoli'),
-        ('2', 'ing. Marco Bongiorni'),
-        ('3', 'Miria Felici'),
-        ('4', 'Daniela Paci'),
-        ('5', 'Paolo Cacchione'),
-        ('6', 'Luigi Roma'),
-        ('7', 'Michele Manella'),
-       )  
-    
-    Scelta_ruolo_cliente= (
-        ('1', 'RSPP'),
-        ('2', 'ASPP'),       
-       )  
-    
-    nome_ref_cliente = models.CharField(max_length=300, choices = Scelta_ref_cliente, default="Marco Bongiorni") # fare attenzione: nel momento in cui si sostituisce il database è necessario inserire o il valore di default oppure blank and null: vedere qui stackoverflow: https://stackoverflow.com/a/73509787/11233866       
+class AnagraficaTeamCliente(models.Model):
+    nome_ref_cliente=models.CharField(max_length=300)
     email_ref_cliente=models.EmailField(max_length=254)
     cellulare_ref_cliente=PhoneNumberField()
-    ruolo_ref_cliente= models.CharField(max_length=300, choices = Scelta_ruolo_cliente,default="ASPP")
-   # sito_rif_cliente=models.ForeignKey(SchemaCertificativo, on_delete=models.PROTECT)
+    ruolo_ref_cliente= models.CharField(max_length=300)
     
-    referente_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   ruolo_ref_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   cell_ref_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   acronimo_ref_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_sito_note=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_sito_acronimo= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   
-    anagraficasitocliente = models.ForeignKey(
-        anagraficasitocliente,
-        on_delete=models.PROTECT
-    )
+    class Meta:
+        verbose_name =("Team Cliente")
+        verbose_name_plural =("Team Cliente")
 
-class AnagraficaSitiCliente(models.Model):  ## RIPRENDERE DA QUESTA CLASSE##
+    def __str__(self):
+        return f"{self.nome_ref_cliente}"
+    
+class AnagraficaSitiCliente(models.Model):  # # RIPRENDERE DA QUESTA CLASSE##
 #   # Relazione one-To-Many for EvidenzeAuditSito
 #   # Qui vengono riportate evidenze sui siti: n° Sito / Indirizzo Sito / Referente di Sito
-    Scelta_nome_sito= (
-        ('15', 'Genova (Ge), Via Puccini 2 / Via Hermada 6b'),       
-       )
-  
-   sito_nome=nome_ref_cliente = models.CharField(max_length=300, choices = Scelta_nome_sito, default="Marco Bongiorni") 
-   indirizzo_sito=models.TextField()    
-   referente_1_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   ruolo_ref_1_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   cell_ref_1_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   acronimo_ref_1_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_1_sito_note=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_1_sito_acronimo= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   
-   referente_2_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   ruolo_ref_2_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   cell_ref_2_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   acronimo_ref_2_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_2_sito_note=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_2_sito_acronimo= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   
-   referente_3_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   ruolo_ref_3_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   cell_ref_3_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   acronimo_ref3_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_3_sito_note=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_3_sito_acronimo= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   
-    referente_4_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   ruolo_ref_4_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   cell_ref_4_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   acronimo_ref_4_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_4_sito_note=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_4_sito_acronimo= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   
-   referente_5_sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   ruolo_ref_45sito= # uno a molti da collegare ad Class AnagraficaTeamCliente
-   cell_ref_5_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   acronimo_ref_5_sito=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_5_sito_note=# uno a molti da collegare ad Class AnagraficaTeamCliente
-   ref_5_sito_acronimo= # uno a molti da collegare ad Class AnagraficaTeamCliente """
+    indirizzo_sito= models.CharField(max_length=300) 
+    team_cliente=models.ManyToManyField(AnagraficaTeamCliente)
+    ubicazione = PlainLocationField(based_fields=['indirizzo_sito'], zoom=7, null=True)
+   # location = models.PointField()
+    
+    class Meta:
+        verbose_name = 'Anagrafica Cliente'
+        verbose_name_plural = 'Anagrafica Cliente'
+
+    def __str__(self):
+        return f"{self.indirizzo_sito}"
+
+
 
 # class EvidenzeAuditSito(models.Model): 
 #   # Relazione Many-to-One - VersioningAuditSito

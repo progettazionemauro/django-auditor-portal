@@ -38,12 +38,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #'leaflet',
+   # 'leaflet_admin_list',
+    # 'django_admin_geomap', # djangi admingeomap # https://github.com/vb64/django.admin.geomap
+    # 'django.contrib.gis', # gis module
+    'app', #app connected to django-importexport
+    #'django_google_maps',
+    #'djangocms_gmaps',
+
     'dbbackup',  # django-dbbackup
     'import_export',#library for import expor to add after installation
-    'app', #app connected to django-importexport
+    
     # Other apps…
-    "phonenumber_field",
+    'phonenumber_field',
+     'location_field.apps.DefaultConfig', # Django Location Field https://django-location-field.readthedocs.io/en/latest/install.html#installation
+
 ]
+
+
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage' #dbbackup setting
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR/'backup'} #dbbackup setting
@@ -59,6 +71,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'DjangoLgs.urls'
 
@@ -102,8 +116,20 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '',
     }
-}
+    
+ }
 
+""" DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'gis',
+        'USER': 'docker', #'user001',
+        'PASSWORD': 'docker', #'123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '25432'
+    }
+}
+ """
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -144,3 +170,43 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+GOOGLE_MAPS_API_KEY = 'AIzaSyATANps-5vRV-NB99qLHwvTat7GZKAn8SI'
+EASY_MAPS_GOOGLE_KEY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ___0123456789'
+
+LOCATION_FIELD = {
+# Impostazioni per provider opestreet
+'map.provider': 'openstreetmap',
+'search.provider': 'nominatim',
+
+#Impostazione per provider google
+   #  'map.provider': 'google',
+   # 'map.zoom': 13,
+   # 'search.provider': 'google',
+   # '   search.suffix': '',
+    # Google
+    #'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+    # 'provider.google.api_key': '',
+    # 'provider.google.api_libraries': '',
+    # 'provider.google.map.type': 'ROADMAP',
+    
+    
+    # Mapbox
+    # 'provider.mapbox.access_token': '',
+    # 'provider.mapbox.max_zoom': 18,
+   #  'provider.mapbox.id': 'mapbox.streets',
+   
+   
+    # OpenStreetMap
+    'provider.openstreetmap.max_zoom': 22,
+    
+    
+    # misc
+   #'resources.root_path': LOCATION_FIELD_PATH,
+   # 'resources.media': {
+   # 'js': (
+   # LOCATION_FIELD_PATH + '/js/form.js',
+   # ),  
+    #} # vedere Qui a pg 8: https://readthedocs.org/projects/django-location-field/downloads/pdf/latest/
+}
+ 
+
