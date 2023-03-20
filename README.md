@@ -88,7 +88,7 @@ Si parte dalla OPZIONE 1 ipotizzando un caso complesso: Database in gsheets
 2) Nella directory pyutils sono state create delle utility per facilitare i task di importazione
 3) Il file read_csv.py recupera un file scaricato in csv ed effettua il parsing identificando il nome delle colonne "Column Names": tali colonne saranno gli elementi essenziali per lo scaffolding dell'app models.py
 
-### Creazione di models.py in relazione al database da improtare
+### Creazione di models.py in relazione al database da importare
 1) Creaiamo un modello semplice in app / models.py - Vedere qui: https://gist.github.com/progettazionemauro/bd924f79e42e4423bb132d0aaf8a2169
 2) Registrare il modello in admin.py dell'app come indicato qui: https://gist.github.com/progettazionemauro/bd924f79e42e4423bb132d0aaf8a2169
 2) recuperate dunque le colonne aprire nell'app models.py e copiare le colonne
@@ -98,6 +98,11 @@ Si parte dalla OPZIONE 1 ipotizzando un caso complesso: Database in gsheets
 5) python3 manage.py makemigrations
 6) python3 manage.py migrate
 7) python3 manage.py createsuperuser
+
+### Inserimento di dati Geografici
+L'inserimento di dati geografici, seppur esiste uno specifico Django Field (GeoDjango) ed apparentemente molto semplice da installare è qualcosa che all'atto pratico si rivela molto complesso.
+La causa non è da attribuirsi a Django ma a due fattori: la complessità dell'installazione di PostGis che risulta molto dipendente dalla macchina sulla quale si sta effettuando l'attività e (Secondo fattore) l'installazione dell'API di Google Maps. Si sono provate molte API di Google Maps ed alcune funzionano. Il problema connesso a Google Maps è che oltre tutto risulta difficile comprendere quali siano le quote che si raggiungono per cui sforando i limiti potrebbero arrivare salatissimi conti sulla c/credito.
+Dai precedenti discorsi si è tentata con successo una terza via e cioè quela di lavorare con OpenStreetMap. L'app funziona ed è stato uno specifico commit. L'app di riferiemnto è la seguente [django-location-field](https://django-location-field.readthedocs.io/en/latest/index.html) peraltro valida anche per Google Maps e Maps Street. L'attività al momento risulta soltanto accennata
 
 
 
