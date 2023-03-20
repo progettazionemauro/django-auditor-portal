@@ -25,6 +25,14 @@ from django_google_maps.widgets import GoogleMapsAddressWidget
 """ @admin.site.register(SampleModelAdmin)
 class SampleModelAdminAdmin(admin.ModelAdmin):
     pass """
+    
+@admin.register(NazioniEntiFinanziari)
+class NazioniEntiFinanziariAdmin(admin.ModelAdmin):
+    list_display=["nazione", "nome_ente_finanziario", "url_ente_finanziario", "Link"]
+    def Link(self, obj):
+       # return format_html('<a  href="https://127.0.0.1:8000/product/{0}" >{1}</a>',obj.id, obj.email_auditor) #url con parametri
+        return format_html(' <a href={0} target=”_blank”>{1}</a>',obj.url_ente_finanziario, obj.nazione)
+    
 
 @admin.register(SchemaCertificativo)
 class SchemaCertificativoAdmin(admin.ModelAdmin):

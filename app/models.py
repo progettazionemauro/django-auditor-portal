@@ -72,6 +72,11 @@ class AnagraficaSitiCliente(models.Model):  # # RIPRENDERE DA QUESTA CLASSE##
     def __str__(self):
         return f"{self.indirizzo_sito}"
 
+class NazioniEntiFinanziari(models.Model):
+    nazione=models.CharField(max_length=100)
+    nome_ente_finanziario=models.CharField(max_length=100)
+    url_ente_finanziario=models.URLField(max_length=300, null=True)
+
 
 
 # class EvidenzeAuditSito(models.Model): 
