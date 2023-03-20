@@ -25,12 +25,14 @@ class SchemaCertificativo(models.Model): #registrato
     def __str__(self):
         return self.schema_certificazione
 
-class Auditor(models.Model): #registrato
+class Auditor(models.Model): #registration
     
     nome_auditor = models.CharField(max_length=300, unique=True) # fare attenzione: nel momento in cui si sostituisce il database è necessario inserire o il valore di default oppure blank and null: vedere qui stackoverflow: https://stackoverflow.com/a/73509787/11233866       
     email_auditor=models.EmailField(max_length=254)
     cellulare_auditor=PhoneNumberField()
     schema_certificativo=models.ManyToManyField(SchemaCertificativo)
+    
+  
     
     
     class Meta:

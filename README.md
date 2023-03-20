@@ -105,6 +105,16 @@ La causa non è da attribuirsi a Django ma a due fattori: la complessità dell'i
 Dai precedenti discorsi si è tentata con successo una terza via e cioè quela di lavorare con OpenStreetMap. L'app funziona ed è stato uno specifico commit. L'app di riferiemnto è la seguente [django-location-field](https://django-location-field.readthedocs.io/en/latest/index.html) peraltro valida anche per Google Maps e Maps Street. L'attività al momento risulta soltanto accennata
 
 
+### Inserimento degli Hyperlink
+Risulta utile inserire degli hyperlink in relazione alla tabella di amministrazione.
+Il codice da inserire in admin.py è di questo tipo. Si faccia riferimento a questo [LINK](https://medium.com/@sevdimali/how-to-add-a-custom-field-in-list-display-django-d7c3e707ec5a) per una descrizione dettagliata
+class AuditorAdmin(admin.ModelAdmin):
+    list_display=["nome_auditor", "email_auditor", "cellulare_auditor", "Link_schema_certificativo"]
+    form = PhoneForm
+    
+    def Link_schema_certificativo(self, obj):
+        return format_html('<a  href="https://127.0.0.1:8000/product/{0}" >{1}</a>',obj.id, obj.email_auditor)
+
 
 
 git clone --branch <name_of_branch> <http:// github link>
