@@ -31,6 +31,7 @@ class Auditor(models.Model): #registration
     email_auditor=models.EmailField(max_length=254)
     cellulare_auditor=PhoneNumberField()
     schema_certificativo=models.ManyToManyField(SchemaCertificativo)
+    disponibile = models.BooleanField(default=True)
     
   
     
@@ -63,6 +64,25 @@ class AnagraficaSitiCliente(models.Model):  # # RIPRENDERE DA QUESTA CLASSE##
     indirizzo_sito= models.CharField(max_length=300) 
     team_cliente=models.ManyToManyField(AnagraficaTeamCliente)
     ubicazione = PlainLocationField(based_fields=['indirizzo_sito'], zoom=7, null=True)
+    
+    ISO_45001='ISO_45001'
+    ISO_45001='ISO_45001'
+    ISO_14001='ISO_14001'
+    ISO_14001='ISO_14001'
+    ANNO_AUDIT=[
+      (ISO_45001, '2022 - ISO 45001:2018'),
+      (ISO_45001, '2023 - ISO 45001:2018'),
+      (ISO_14001, '2022 - ISO 14001:2018'),
+      (ISO_14001, '2023 - ISO 14001:2018'),
+            ]
+
+    anno_audit=models.CharField(
+        max_length = 30,
+       # choices = ANNO_AUDIT,
+       choices= ANNO_AUDIT,
+        )
+    
+    
    # location = models.PointField()
     
     class Meta:

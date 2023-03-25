@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'admin_searchable_dropdown', #per aggiungere dropdown in admin panel https://pypi.org/project/django-admin-searchable-dropdown/
     #'leaflet',
    # 'leaflet_admin_list',
     # 'django_admin_geomap', # djangi admingeomap # https://github.com/vb64/django.admin.geomap
