@@ -32,9 +32,7 @@ class Auditor(models.Model): #registration
     cellulare_auditor=PhoneNumberField()
     schema_certificativo=models.ManyToManyField(SchemaCertificativo)
     disponibile = models.BooleanField(default=True)
-    
-  
-    
+    foto = models.FileField(blank=True, default="default.jpg")
     
     class Meta:
         verbose_name = 'Auditor'

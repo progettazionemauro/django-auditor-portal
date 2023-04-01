@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,14 +32,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+     
+    'django.contrib.admin', # installazione grappelli vedere qui: https://django-grappelli.readthedocs.io/en/latest/quickstart.html
     'django_crontab',  # crontab app
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'admin_searchable_dropdown', #per aggiungere dropdown in admin panel https://pypi.org/project/django-admin-searchable-dropdown/
+    # 'grappelli', # installazione grappelli vedere qui: https://django-grappelli.readthedocs.io/en/latest/quickstart.html
+    #'admin_searchable_dropdown', #per aggiungere dropdown in admin panel https://pypi.org/project/django-admin-searchable-dropdown/
     #'leaflet',
    # 'leaflet_admin_list',
     # 'django_admin_geomap', # djangi admingeomap # https://github.com/vb64/django.admin.geomap
@@ -53,6 +56,7 @@ INSTALLED_APPS = [
     # Other apps…
     'phonenumber_field',
      'location_field.apps.DefaultConfig', # Django Location Field https://django-location-field.readthedocs.io/en/latest/install.html#installation
+    
 
 ]
 
@@ -88,10 +92,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
 ]
+# Our settings
+GRAPPELLI_SWITCH_USER = True
 
 WSGI_APPLICATION = 'DjangoLgs.wsgi.application'
 
@@ -166,6 +173,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"] # new
+STATIC_ROOT = BASE_DIR / "staticfiles"  #new
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+# MEDIA_ROOT = [BASE_DIR/"media"]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

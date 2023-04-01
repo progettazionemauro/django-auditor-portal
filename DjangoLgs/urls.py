@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+# from django.conf.urls import include
+
+admin.site.site_header="Amministrazione Sito"  # cambio titolo
+admin.site.index_title="Gestione audit" 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+   # path('grappelli/', include('grappelli.urls')), # grappelli URLS
+    path('admin/', admin.site.urls), # admin site
 ]
+
