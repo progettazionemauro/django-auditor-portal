@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     
     # Other apps…
     'phonenumber_field',
-     'location_field.apps.DefaultConfig', # Django Location Field https://django-location-field.readthedocs.io/en/latest/install.html#installation
     
 
 ]
