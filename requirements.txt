@@ -11,6 +11,7 @@ django-location-field==2.7.0
 django-phonenumber-field==7.0.2
 et-xmlfile==1.1.0
 Faker==18.3.2
+gunicorn
 MarkupPy==1.14
 numpy==1.24.2
 odfpy==1.4.1
