@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@63&#y2242bx9z_^ep8oi2yl(b7^@4hgrs(&_=1avoh90i=-ef
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sea-lion-app-6f6ns.ondigitalocean.app', 'localhost','1.27.0.0.1']
+ALLOWED_HOSTS = ['sea-lion-app-6f6ns.ondigitalocean.app', 'localhost','127.0.0.1']
 
 
 # Application definition
@@ -119,7 +119,7 @@ DATABASES = {
         'NAME': 'auditor',
         'USER': 'mauro9916',
         'PASSWORD': 'testpass123',
-        'HOST': 'localhost',
+        'HOST': 'sea-lion-app-6f6ns.ondigitalocean.app',
         'PORT': '',
     }
     
