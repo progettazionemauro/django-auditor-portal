@@ -120,7 +120,7 @@ DATABASES = {
         'USER': 'mauro9916',
         'PASSWORD': 'testpass123',
         'HOST': 'sea-lion-app-6f6ns.ondigitalocean.app',
-        'PORT': '',
+        'PORT': '5432',
     }
     
  }
